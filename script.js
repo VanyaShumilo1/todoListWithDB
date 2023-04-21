@@ -32,6 +32,12 @@ const render = () => {
 
 render()
 
+document.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        addButton.click();
+    }
+})
+
 addButton.addEventListener('click', () => {
     if(input.value.trim() !== "") {
         console.log(todos)
