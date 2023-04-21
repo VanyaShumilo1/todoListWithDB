@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #B1BACB;
+}
+
+.todoList {
+    width: 1000px;
+    min-height: 670px;
+    background: #fff;
+    border-radius: 32px;
+    padding-top: 72px;
+    padding-bottom: 48px;
+    box-shadow: 0px 0px 4px rgba(0, 23, 71, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 48px;
+    letter-spacing: 0.01em;
+    color: #11175E;
+}
+
+.triggers {
+    margin-top: 52px;
+    padding: 7px 7px 7px 20px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #EEEEEE;
+    border-radius: 8px;
+}
+
+.addInput {
+    border: none;
+    outline: none;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    color: #B1BACB;
+    width: 450px;
+}
+
+.addButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    width: 84px;
+    height: 44px;
+    background: #2D70FD;
+    border: 1px solid #2D70FD;
+    border-radius: 4px;
+}
+
+.list {
+    margin-top: 58px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: scroll;
+    height: 255px;
+}
+
+.list-item {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    transition: 0.3s all;
+    cursor: pointer;
+}
+
+.list-item {
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    color: #001747;
+}
+
+.list-item label {
+    cursor: pointer;
+}
+
+.checkbox {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(45, 112, 253, 0.15);
+    border-radius: 100%;
+    transition: 0.3s all;
+}
+
+.list-item:hover {
+    color: #2D70FD;
+}
+
+.active {
+    background: url('img/ok.svg') center no-repeat;
+    background-color: #00D8A7;
+}
+
+.todoList__footer .container{
+    border-top: 2px solid #B1BACB;
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    color: #B1BACB;
+}
+
+.todoList__footer .container button {
+    background: none;
+    outline: none;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
