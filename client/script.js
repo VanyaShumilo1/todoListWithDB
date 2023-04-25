@@ -1,4 +1,3 @@
-
 const input = document.querySelector('.addInput')
 const addButton = document.querySelector('.addButton')
 const list = document.querySelector('.list')
@@ -8,7 +7,7 @@ let id = 0
 
 const render = (todos = []) => {
 
-    while(list.firstChild) {
+    while (list.firstChild) {
         list.removeChild(list.firstChild)
     }
 
@@ -39,22 +38,26 @@ document.addEventListener('keyup', (event) => {
     }
 })
 
-addButton.addEventListener('click', () => {
-    if(input.value.trim() !== "") {
+addButton.addEventListener('click', async () => {
+    if (input.value.trim() !== "") {
         console.log(todos)
-        todos.push({
-            text: input.value.trim(),
-            status: false,
-        })
+
+        await createTodoInDB(input.value.trim())
+        await getTodosFromDB()
         render(todos)
     } else {
         alert(123)
     }
 })
 
-document.addEventListener('click', (event) => {
-    if(event.target.tagName === "LABEL") {
+document.addEventListener('click', async (event) => {
+    if (event.target.tagName === "LABEL") {
+
+        const todoID = event.target.dataset.id
+
         todos[Number(event.target.htmlFor)].status = !todos[Number(event.target.htmlFor)].status
+        await changeTodoStatusInDB(todoID, todos[Number(event.target.htmlFor)].status)
+
         render(todos)
     }
 
@@ -66,6 +69,31 @@ const getTodosFromDB = async () => {
         console.log(res.todos)
         todos = res.todos
         render(todos)
+    })
+}
+
+const createTodoInDB = async (text) => {
+    await fetch('http://localhost:5000/todo', {
+        method: 'post',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            text: text,
+            status: false,
+        })
+    })
+}
+
+const changeTodoStatusInDB = async (todoID, status) => {
+    await fetch(`http://localhost:5000/todo/${todoID}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify({
+            status: status,
+        })
     })
 }
 
